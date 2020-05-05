@@ -9,3 +9,27 @@ export const registerUser = (user) => {
     });
   });
 };
+
+export const loginUser = (user) => {
+  return new Promise((resolve, reject) => {
+    axios.post(url + "/login", user).then((res) => {
+      resolve(res.data);
+    });
+  });
+};
+
+export const getUserById = (id) => {
+  return new Promise((resolve, reject) => {
+    axios.get(url + "/users/" + id).then((res) => {
+      resolve(res.data);
+    });
+  });
+};
+
+export const editUserById = (id, data) => {
+  return new Promise((resolve, reject) => {
+    axios.put(url + "/users/" + id, data).then((res) => {
+      resolve(res.data);
+    });
+  });
+};
