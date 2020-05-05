@@ -1,0 +1,40 @@
+.menubar {
+    border-top: 1px solid #DBDBDB;
+    margin: 0 auto;
+    padding: 6px;
+}
+
+.menubar-container:after {
+    clear: both;
+    content: "";
+    display: block;
+}
+
+.menubar-container {
+    max-width: 425px;
+    margin: 0 auto;
+}
+
+.menubar-container ul {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.menubar-container li {
+    list-style-type: none;
+    font-weight: bold;
+}
+
+
+.menubar-container li a {
+    text-decoration: none;
+    color: #999999;
+    cursor: pointer;
+}
+
+.menubar-container li a:hover {
+    text-decoration: none;
+    color: black;
+}

@@ -33,3 +33,11 @@ export const editUserById = (id, data) => {
     });
   });
 };
+
+export const getAllProducts = () => {
+  return new Promise((resolve, reject) => {
+    axios.get(url + "/products").then((res) => {
+      resolve(res.data);
+    });
+  });
+};

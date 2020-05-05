@@ -18,11 +18,9 @@ export default function Login(props) {
     console.log(res.status);
     if (res.status === "success") {
       setTokenLogin(res.data._id);
-      
       props.history.push("/profile");
     }
   };
-
 
   return (
     <div style={{}}>
