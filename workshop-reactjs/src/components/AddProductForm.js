@@ -30,7 +30,7 @@ export default function AddProductForm(props) {
     <div>
       <div className="pb-4">
         <div className="card">
-          <div className="card-header text-left text-white" style={{backgroundColor:"#FF5C53"}}>
+          <div className="card-header text-left text-white" style={{backgroundColor:"#009DF5"}}>
             <div className="row">
               <div className="col text-left pt-2">
                 <h4>Add New Product</h4>

@@ -13,12 +13,11 @@ import {
 } from "../../utils/AuthToken";
 
 export default function Login(props) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const [resStatus, setResStatus] = useState("");
   const [resMsg, setResMsg] = useState("");
 
   const { register, handleSubmit, watch, errors } = useForm();
+  
   const onSubmit = async (data) => {
     let dataLogin = {
       username: data.username,
@@ -39,7 +38,7 @@ export default function Login(props) {
   };
 
   return (
-    <div style={{}}>
+    <div className="login-bg">
       <div className="login-area d-flex align-items-center justify-content-center">
         <div className="card" style={{ width: "29rem" }}>
           <div className="card-body">
@@ -61,8 +60,8 @@ export default function Login(props) {
                   />
                   {errors.username && errors.username.type === "required" && (
                     <p className="text-left" style={{ color: "red" }}>
-                      <i class="fas fa-exclamation-triangle"></i>This is
-                      required
+                      <i className="fas fa-exclamation-triangle"></i>This is
+                      required username
                     </p>
                   )}
                 </div>
@@ -78,7 +77,7 @@ export default function Login(props) {
                   />
                   {errors.password && errors.password.type === "required" && (
                     <p className="text-left" style={{ color: "red" }}>
-                      <i class="fas fa-exclamation-triangle"></i>This is
+                      <i className="fas fa-exclamation-triangle"></i>This is
                       required password
                     </p>
                   )}

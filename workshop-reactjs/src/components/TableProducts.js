@@ -73,7 +73,7 @@ export default function TableProducts(props) {
   };
 
   return (
-    <div style={{background: "#F5F5F7"}}>
+    <div>
       <div className="pt-3 pb-3">
         <div className="row justify-content-end">
           <div className="col-4">
@@ -88,7 +88,7 @@ export default function TableProducts(props) {
       </div>
       <table className="table table-bordered" style={{background:"#ffffff"}}>
         <thead>
-          <tr style={{backgroundColor:"#FF5C53", color:"white"}}>
+          <tr style={{backgroundColor:"#009DF5", color:"white"}}>
             <th scope="col">#</th>
             <th onClick={() => setStatus(sortTitle, "title")} scope="col">
               Title {setArrow(sortTitle)}

@@ -1,11 +1,15 @@
+import { BrowserRouter } from "react-router-dom";
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import * as serviceWorker from "./serviceWorker";
+
+import 'sweetalert2/src/sweetalert2.scss'
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter } from "react-router-dom";
+
+import * as serviceWorker from "./serviceWorker";
+import App from "./App";
 import history from "./helper/History";
+
+import "./index.css";
 
 ReactDOM.render(
   <React.StrictMode>

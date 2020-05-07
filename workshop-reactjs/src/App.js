@@ -10,6 +10,7 @@ import PrivateRoute from "./helper/PrivateRoute";
 import Products from "./pages/Products/Products";
 import Profile from "./pages/Profile/Profile";
 import Register from "./pages/Register/Register";
+import NotFound from "./pages/NotFound/NotFound";
 
 import "./App.css";
 import ViewProduct from "./pages/ViewProduct/ViewProduct";
@@ -24,6 +25,7 @@ var routers = {
   editprofile: "/edit-profile/:id",
   editproduct: "/edit-product/:id",
   viewproduct: "/view-product/:id",
+  notfound: "*",
 };
 
 function App() {
@@ -75,6 +77,7 @@ function App() {
             path={routers.viewproduct}
             component={ViewProduct}
           />
+          <Route exact path={routers.notfound} component={NotFound} />
         </Switch>
       </div>
     </div>
