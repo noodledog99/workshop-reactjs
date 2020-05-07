@@ -14,7 +14,7 @@ export default function Profile() {
   }, []);
 
   const fetchUser = async () => {
-    await getUserById("5eb106944b35ac0011bb3582").then((res) => {
+    await getUserById(localStorage.getItem('user_id')).then((res) => {
       if (res.status === "success") {
         setUserProfile(res.data);
       }
@@ -35,7 +35,7 @@ export default function Profile() {
                     {/* <button className="btn btn-outline-light text-black-50 border">
                       Edit Profile
                     </button> */}
-                    <Link to={`/editprofile/5eb106944b35ac0011bb3582`} className="btn btn-outline-light text-black-50 border">
+                    <Link to={`/edit-profile/${localStorage.getItem('user_id')}`} className="btn btn-outline-light text-black-50 border">
                       Edit Profile
                     </Link>
                   </div>

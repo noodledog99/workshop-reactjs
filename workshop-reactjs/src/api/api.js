@@ -41,3 +41,27 @@ export const getAllProducts = () => {
     });
   });
 };
+
+export const addProduct = (product) => {
+  return new Promise((resolve, reject) => {
+    axios.post(url + "/products", product).then((res) => {
+      resolve(res.data);
+    });
+  });
+};
+
+export const editProduct = (id, product) => {
+  return new Promise((resolve, reject) => {
+    axios.put(url + "/products/" + id, product).then((res) => {
+      resolve(res.data);
+    });
+  });
+};
+
+export const deleteProduct = (id) => {
+  return new Promise((resolve, reject) => {
+    axios.delete(url + "/products/" + id).then((res) => {
+      resolve(res.data);
+    });
+  });
+};

@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink, Redirect } from "react-router-dom";
-import { isLogout } from "../utils/AuthToken";
+import { isLogout, isLogin } from "../../utils/AuthToken";
+import "./Header.css";
 
-export default function Header() {
+export default function Header(props) {
   const [navigate, setNavigate] = useState("");
 
   const goToEditProfile = () => {
@@ -10,13 +11,14 @@ export default function Header() {
   };
 
   const goToLogout = () => {
-    isLogout()
+    isLogout();
+    props.setAuth(isLogin());
     setNavigate("logout");
   };
 
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg navbar-light bg-white">
         <a className="navbar-brand" href="#">
           MiniWorkShop
         </a>
@@ -33,7 +35,7 @@ export default function Header() {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav ml-auto">
-            <li className="nav-item">
+            <li className={props.auth ? "d-none d-print-block" : "nav-item"}>
               <NavLink
                 exact
                 to="/login"
@@ -43,7 +45,7 @@ export default function Header() {
                 Login
               </NavLink>
             </li>
-            <li className="nav-item">
+            <li className={props.auth ? "d-none d-print-block" : "nav-item"}>
               <NavLink
                 exact
                 to="/register"
@@ -53,7 +55,7 @@ export default function Header() {
                 Register
               </NavLink>
             </li>
-            <li className="nav-item">
+            <li className={props.auth ? "nav-item" : "d-none d-print-block"}>
               <NavLink
                 exact
                 to="/products"
@@ -63,7 +65,31 @@ export default function Header() {
                 Products
               </NavLink>
             </li>
-            <li className="nav-item dropdown">
+            <li className={props.auth ? "nav-item" : "d-none d-print-block"}>
+              <NavLink
+                exact
+                to="/manage-product"
+                className="nav-link"
+                activeClassName="active"
+              >
+                Manage
+              </NavLink>
+            </li>
+            <li className={props.auth ? "nav-item" : "d-none d-print-block"}>
+              <NavLink
+                exact
+                to="/profile"
+                className="nav-link"
+                activeClassName="active"
+              >
+                Profile
+              </NavLink>
+            </li>
+            <li
+              className={
+                props.auth ? "nav-item dropdown" : "d-none d-print-block"
+              }
+            >
               <a
                 className="nav-link dropdown-toggle"
                 href="#"
@@ -73,12 +99,12 @@ export default function Header() {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                UserName
+                {props.displayname}
               </a>
               <div
                 className="dropdown-menu"
                 aria-labelledby="navbarDropdown"
-                style={{ left: " -77px" }}
+                style={{ left: " -60px" }}
               >
                 <a
                   className="dropdown-item"
@@ -101,7 +127,10 @@ export default function Header() {
         </div>
       </nav>
       {navigate === "edit-profile" && (
-        <Redirect to={`/editprofile/5eb106944b35ac0011bb3582`} push={true} />
+        <Redirect
+          to={`/edit-profile/${localStorage.getItem("user_id")}`}
+          push={true}
+        />
       )}
       {navigate === "logout" && <Redirect to="/" push={true} />}
     </div>

@@ -1,0 +1,30 @@
+import React, { useEffect, useState } from "react";
+import { getAllProducts } from "../../api/api";
+
+export default function ViewProduct() {
+  const [product, setProduct] = useState([]);
+  useEffect(() => {
+    fetchAllProducts();
+  }, []);
+
+  const fetchAllProducts = async () => {
+    await getAllProducts().then((res) => {
+      if (res.status === "success") {
+        let data = res.data.filter((item) => {
+          return item.user_id === localStorage.getItem("user_id");
+        });
+        setProduct(data[0]);
+      }
+    });
+  };
+
+  return (
+    <div>
+      <h1>Product Detail</h1>
+      <h2>Title: {product.title}</h2>
+      <p>Detail: {product.detail}</p>
+      <p>Stock: {product.stock}</p>
+      <p>Price: {product.price}</p>
+    </div>
+  );
+}

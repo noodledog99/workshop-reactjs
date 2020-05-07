@@ -48,6 +48,7 @@ export default function EditProfile(props) {
           <div className="card-body">
             <div className="content-top">
               <h1>Edit Profile</h1>
+              <p>edit your name, age etc.</p>
             </div>
             <div className="content-center text-left">
               <form onSubmit={handleEditProfile}>
@@ -56,10 +57,10 @@ export default function EditProfile(props) {
                   <input
                     type="text"
                     value={username}
-                    onChange={(e) => setUsername(e.target.value)}
                     className="form-control"
                     id="username"
                     placeholder=""
+                    disabled
                   />
                 </div>
                 <div className="form-group">
@@ -67,10 +68,10 @@ export default function EditProfile(props) {
                   <input
                     type="password"
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
                     className="form-control"
                     id="password"
                     placeholder=""
+                    disabled
                   />
                 </div>
                 <div className="form-group">
