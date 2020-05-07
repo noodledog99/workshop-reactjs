@@ -30,6 +30,20 @@ export default function Profile() {
               <div className="row pt-2">
                 <div className="col-12 d-flex justify-content-center">
                   <h2>{userProfile.name}</h2>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-12">
+                  <p>
+                    <strong>
+                      <i className="fas fa-user"></i> Age
+                    </strong>{" "}
+                    <span className="pr-3">{userProfile.age}</span>
+                    <strong>
+                      <i className="fas fa-dollar-sign"></i> Salary
+                    </strong>{" "}
+                    <span>{userProfile.salary}</span>
+                  </p>
                   <div className="btn-edit">
                     <Link
                       style={{
@@ -42,20 +56,6 @@ export default function Profile() {
                       Edit Profile
                     </Link>
                   </div>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-12">
-                  <p>
-                    <strong>
-                      <i class="fas fa-user"></i> Age
-                    </strong>{" "}
-                    <span className="pr-3">{userProfile.age}</span>
-                    <strong>
-                      <i class="fas fa-dollar-sign"></i> Salary
-                    </strong>{" "}
-                    <span>{userProfile.salary}</span>
-                  </p>
                 </div>
               </div>
             </div>

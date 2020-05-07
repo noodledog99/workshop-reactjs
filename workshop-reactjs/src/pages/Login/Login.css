@@ -8,6 +8,15 @@
   animation: gradient 15s ease infinite;
 }
 
+.logo {
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.logo img {
+  width: 100%;
+}
+
 @keyframes gradient {
   0% {
     background-position: 0% 50%;
@@ -17,5 +26,29 @@
   }
   100% {
     background-position: 0% 50%;
+  }
+}
+
+.login-item {
+  max-width: 468px;
+}
+
+.login-item img {
+  width: 100%;
+}
+
+@media (max-width: 964px) {
+  .login-area {
+    height: 140vh;
+  }
+
+  .login-item:nth-child(2) {
+    max-width: 480px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .login-area {
+    height: 137vh;
   }
 }

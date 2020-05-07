@@ -17,7 +17,7 @@ export default function Login(props) {
   const [resMsg, setResMsg] = useState("");
 
   const { register, handleSubmit, watch, errors } = useForm();
-  
+
   const onSubmit = async (data) => {
     let dataLogin = {
       username: data.username,
@@ -39,56 +39,69 @@ export default function Login(props) {
 
   return (
     <div className="login-bg">
-      <div className="login-area d-flex align-items-center justify-content-center">
-        <div className="card" style={{ width: "29rem" }}>
-          <div className="card-body">
-            <div className="content-top">
-              <h1>Login</h1>
-              <p>Enter your credentials to login</p>
+      <div
+        className="login-area  d-flex flex-wrap-reverse justify-content-center align-items-center"
+        style={{ padding: "60px 0" }}
+      >
+        <div
+          className="login-item"
+          style={{
+            padding: "89px",
+            backgroundColor: "#f9f9f9",
+            maxWidth: "480px",
+            width: "100%",
+            height: "468px",
+          }}
+        >
+          <h1>welcom </h1>
+          <p>Login to the Dashboard</p>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="form-group">
+              <input
+                type="text"
+                name="username"
+                className="form-control"
+                id="username"
+                placeholder="Enter username"
+                maxLength="20"
+                ref={register({ required: true })}
+              />
+              {errors.username && errors.username.type === "required" && (
+                <p className="text-left" style={{ color: "red" }}>
+                  <i className="fas fa-exclamation-triangle"></i>This is
+                  required username
+                </p>
+              )}
             </div>
-            <div className="content-center">
-              <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    name="username"
-                    className="form-control"
-                    id="username"
-                    placeholder="Enter username"
-                    maxLength="20"
-                    ref={register({ required: true })}
-                  />
-                  {errors.username && errors.username.type === "required" && (
-                    <p className="text-left" style={{ color: "red" }}>
-                      <i className="fas fa-exclamation-triangle"></i>This is
-                      required username
-                    </p>
-                  )}
-                </div>
-                <div className="form-group">
-                  <input
-                    type="password"
-                    name="password"
-                    className="form-control"
-                    id="password"
-                    placeholder="Enter Password"
-                    maxLength="20"
-                    ref={register({ required: true })}
-                  />
-                  {errors.password && errors.password.type === "required" && (
-                    <p className="text-left" style={{ color: "red" }}>
-                      <i className="fas fa-exclamation-triangle"></i>This is
-                      required password
-                    </p>
-                  )}
-                </div>
-                {resStatus === "error" && <p style={{ color: "red" }}>{resMsg}</p>}
-                <button type="submit" className="btn btn-primary btn-block">
-                  Login
-                </button>
-              </form>
+            <div className="form-group">
+              <input
+                type="password"
+                name="password"
+                className="form-control"
+                id="password"
+                placeholder="Enter Password"
+                maxLength="20"
+                ref={register({ required: true })}
+              />
+              {errors.password && errors.password.type === "required" && (
+                <p className="text-left" style={{ color: "red" }}>
+                  <i className="fas fa-exclamation-triangle"></i>This is
+                  required password
+                </p>
+              )}
             </div>
-          </div>
+            {resStatus === "error" && <p style={{ color: "red" }}>{resMsg}</p>}
+            <button
+              type="submit"
+              className="btn btn-primary btn-block"
+              style={{ borderRadius: "20px" }}
+            >
+              Login
+            </button>
+          </form>
+        </div>
+        <div className="login-item">
+          <img src={process.env.PUBLIC_URL + "asset/images/3411109.jpg"}></img>
         </div>
       </div>
     </div>

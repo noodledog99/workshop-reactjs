@@ -17,6 +17,7 @@ export default function Register(props) {
       age: data.age,
       salary: data.salary,
     };
+    
     await registerUser(dataRegister).then((res) => {
       if (res.status === "sucecss") {
         Swal.fire({
@@ -34,7 +35,10 @@ export default function Register(props) {
   return (
     <div className="register-bg">
       <div className="register-area d-flex align-items-center justify-content-center">
-        <div className="card" style={{ width: "32rem" }}>
+        <div
+          className="card"
+          style={{ width: "32rem", boxShadow: "10px 10px" }}
+        >
           <div className="card-body">
             <div className="content-top">
               <h1>Register</h1>
@@ -139,7 +143,7 @@ export default function Register(props) {
                     </p>
                   )}
                 </div>
-                <button type="submit" className="btn btn-primary btn-block">
+                <button type="submit" className="btn btn-primary btn-block" style={{borderRadius: "20px"}}>
                   CREATE
                 </button>
               </form>

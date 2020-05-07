@@ -23,7 +23,11 @@ export default function Products() {
             item.title !== undefined &&
             item.detail !== undefined &&
             item.stock !== undefined &&
-            item.price !== undefined
+            item.price !== undefined &&
+            item.title !== null &&
+            item.detail !== null &&
+            item.stock !== null &&
+            item.price !== null 
           );
         });
         setProducts(data);

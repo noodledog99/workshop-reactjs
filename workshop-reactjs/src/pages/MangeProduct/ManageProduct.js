@@ -14,7 +14,13 @@ export default function ManageProduct() {
     await getAllProducts().then((res) => {
       if (res.status === "success") {
         let data = res.data.filter((item) => {
-          return item.user_id === localStorage.getItem("user_id");
+          return (
+            item.user_id === localStorage.getItem("user_id") &&
+            item.title !== null &&
+            item.detail !== null &&
+            item.stock !== null &&
+            item.price !== null
+          );
         });
         setProducts(data);
       }

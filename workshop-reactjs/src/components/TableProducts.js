@@ -72,6 +72,9 @@ export default function TableProducts(props) {
     );
   };
 
+  console.log(props.products);
+  
+
   return (
     <div>
       <div className="pt-3 pb-3">
@@ -126,7 +129,7 @@ export default function TableProducts(props) {
                 <td>{item.title}</td>
                 <td>{item.detail}</td>
                 <td>{item.stock}</td>
-                <td>{item.price}</td>
+                <td>฿{item.price.toLocaleString()}</td>
                 <td className={props.isFlag ? "d-none d-print-block" : ""}>
                   <Link
                     style={{ textDecoration: "none" }}
