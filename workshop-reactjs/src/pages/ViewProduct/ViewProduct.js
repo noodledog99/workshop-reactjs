@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { getAllProducts } from "../../api/api";
 
+import "./ViewProduct.css";
+
 export default function ViewProduct() {
   const [product, setProduct] = useState([]);
   useEffect(() => {
@@ -19,12 +21,18 @@ export default function ViewProduct() {
   };
 
   return (
-    <div>
-      <h1>Product Detail</h1>
-      <h2>Title: {product.title}</h2>
-      <p>Detail: {product.detail}</p>
-      <p>Stock: {product.stock}</p>
-      <p>Price: {product.price}</p>
+    <div className="product-bg">
+      <div className="view-area d-flex align-items-center justify-content-center">
+          <div className="container">
+            <div class="product-detail">
+              <h1>Product Detail</h1>
+              <h2>Title: {product.title}</h2>
+              <p>{product.detail}</p>
+              <p>Stock: {product.stock}</p>
+              <p>Price: {product.price}</p>
+            </div>
+          </div>
+      </div>
     </div>
   );
 }
