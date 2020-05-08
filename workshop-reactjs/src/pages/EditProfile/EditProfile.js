@@ -42,7 +42,7 @@ export default function EditProfile(props) {
   }, []);
 
   return (
-    <div style={{}}>
+    <div className="editprofile-bg">
       <div className="editp-area pt-4">
         <div className="card" style={{ width: "50rem", margin: "0 auto" }}>
           <div className="card-body">

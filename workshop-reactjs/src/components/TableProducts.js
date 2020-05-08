@@ -1,112 +1,61 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export default function TableProducts(props) {
-  const [keyword, setKeyword] = useState("");
-  const [sortTitle, setSortTitle] = useState(true);
-  const [sortDetail, setSortDetail] = useState(true);
-  const [sortStock, setSortStock] = useState(true);
-  const [sortPrice, setSortPrice] = useState(true);
 
-  const setStatus = (sort, key) => {
-    var ststus = sort ? false : true;
-    switch (key) {
-      case "title":
-        setSortTitle(ststus);
-        if (sortTitle) {
-          props.products.sort((a, b) => {
-            return a.title.localeCompare(b.title);
-          });
-        } else {
-          props.products.sort((a, b) => {
-            return b.title.localeCompare(a.title);
-          });
-        }
-        break;
-      case "detail":
-        setSortDetail(ststus);
-        if (sortDetail) {
-          props.products.sort((a, b) => {
-            return a.detail.localeCompare(b.detail);
-          });
-        } else {
-          props.products.sort((a, b) => {
-            return b.detail.localeCompare(a.detail);
-          });
-        }
-        break;
-      case "stock":
-        setSortStock(ststus);
-        if (sortStock) {
-          props.products.sort((a, b) => {
-            return a.stock - b.stock;
-          });
-        } else {
-          props.products.sort((a, b) => {
-            return b.stock - a.stock;
-          });
-        }
-        break;
-      case "price":
-        setSortPrice(ststus);
-        if (sortPrice) {
-          props.products.sort((a, b) => {
-            return a.price - b.price;
-          });
-        } else {
-          props.products.sort((a, b) => {
-            return b.price - a.price;
-          });
-        }
-        break;
-      default:
-        break;
+  useEffect(() => {
+    if (props.isFlag) {
+      let title = props.sortTitle ? false : true;
+      let detail = props.sortDetail ? false : true;
+      let stock = props.sortStock ? false : true;
+      let price = props.sortPrice ? false : true;
+      props.setSortTitle(title);
+      props.setSortDetail(detail);
+      props.setSortStock(stock);
+      props.setSortPrice(price);
     }
-  };
+  }, []);
 
   const setArrow = (sort) => {
     return sort ? (
-      <i className="fas fa-arrow-up" ></i>
+      <i className="fas fa-arrow-up"></i>
     ) : (
-      <i className="fas fa-arrow-down" style={{color:"black"}}></i>
+      <i className="fas fa-arrow-down" style={{ color: "black" }}></i>
     );
   };
-
-  console.log(props.products);
-  
-
+ 
   return (
     <div>
-      <div className="pt-3 pb-3">
-        <div className="row justify-content-end">
-          <div className="col-4">
-            <input
-              className="form-control"
-              type="text"
-              onChange={(e) => setKeyword(e.target.value)}
-              placeholder="Search"
-            />
-          </div>
-        </div>
-      </div>
-      <table className="table table-bordered" style={{background:"#ffffff"}}>
+      <table className="table table-bordered" style={{ background: "#ffffff" }}>
         <thead>
-          <tr style={{backgroundColor:"#009DF5", color:"white"}}>
-            <th scope="col">#</th>
-            <th onClick={() => setStatus(sortTitle, "title")} scope="col">
-              Title {setArrow(sortTitle)}
-            </th>
-            <th onClick={() => setStatus(sortDetail, "detail")} scope="col">
-              Detail {setArrow(sortDetail)}
-            </th>
-            <th onClick={() => setStatus(sortStock, "stock")} scope="col">
-              Stock {setArrow(sortStock)}
-            </th>
-            <th onClick={() => setStatus(sortPrice, "price")} scope="col">
-              Price {setArrow(sortPrice)}
+          <tr style={{ backgroundColor: "#009DF5", color: "white" }}>
+            <th scope="col-md-1">#</th>
+            <th
+              onClick={() => props.setStatus(props.sortTitle, "title")}
+              scope="col-md-4"
+            >
+              Title {setArrow(props.sortTitle)}
             </th>
             <th
-              scope="col"
+              onClick={() => props.setStatus(props.sortDetail, "detail")}
+              scope="col-md-4"
+            >
+              Detail {setArrow(props.sortDetail)}
+            </th>
+            <th
+              onClick={() => props.setStatus(props.sortStock, "stock")}
+              scope="col-md-1"
+            >
+              Stock {setArrow(props.sortStock)}
+            </th>
+            <th
+              onClick={() => props.setStatus(props.sortPrice, "price")}
+              scope="col-md-1"
+            >
+              Price {setArrow(props.sortPrice)}
+            </th>
+            <th
+              scope="col-md-3"
               className={props.isFlag === true ? "d-none d-print-block" : ""}
             >
               Action
@@ -114,15 +63,8 @@ export default function TableProducts(props) {
           </tr>
         </thead>
         <tbody>
-          {props.products
-            .filter((item) => {
-              return (
-                item.title.toLowerCase().includes(keyword.toLowerCase()) ||
-                item.detail.toLowerCase().includes(keyword.toLowerCase()) ||
-                item.stock == keyword ||
-                item.price == keyword
-              );
-            })
+          {props
+            .products()
             .map((item, index) => (
               <tr key={index}>
                 <th scope="row">{index + 1}</th>

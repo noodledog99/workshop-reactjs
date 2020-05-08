@@ -53,7 +53,7 @@ export default function Login(props) {
             height: "468px",
           }}
         >
-          <h1>welcom </h1>
+          <h1>Welcom </h1>
           <p>Login to the Dashboard</p>
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-group">

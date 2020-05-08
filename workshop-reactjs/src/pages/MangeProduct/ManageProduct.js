@@ -5,6 +5,11 @@ import { getAllProducts, addProduct, deleteProduct } from "../../api/api";
 
 export default function ManageProduct() {
   const [products, setProducts] = useState([]);
+  const [totalPosts, setTotalPost] = useState();
+  const [sortTitle, setSortTitle] = useState(true);
+  const [sortDetail, setSortDetail] = useState(true);
+  const [sortStock, setSortStock] = useState(true);
+  const [sortPrice, setSortPrice] = useState(true);
 
   useEffect(() => {
     fetchAllProducts();
@@ -43,6 +48,66 @@ export default function ManageProduct() {
     });
   };
 
+  const currentPosts = () => {
+    return products
+  };
+
+  const setStatus = (sort, key) => {
+    var ststus = sort ? false : true;
+    switch (key) {
+      case "title":
+        setSortTitle(ststus);
+        if (sortTitle) {
+          products.sort((a, b) => {
+            return a.title.localeCompare(b.title);
+          });
+        } else {
+          products.sort((a, b) => {
+            return b.title.localeCompare(a.title);
+          });
+        }
+        break;
+      case "detail":
+        setSortDetail(ststus);
+        if (sortDetail) {
+          products.sort((a, b) => {
+            return a.detail.localeCompare(b.detail);
+          });
+        } else {
+          products.sort((a, b) => {
+            return b.detail.localeCompare(a.detail);
+          });
+        }
+        break;
+      case "stock":
+        setSortStock(ststus);
+        if (sortStock) {
+          products.sort((a, b) => {
+            return a.stock - b.stock;
+          });
+        } else {
+          products.sort((a, b) => {
+            return b.stock - a.stock;
+          });
+        }
+        break;
+      case "price":
+        setSortPrice(ststus);
+        if (sortPrice) {
+          products.sort((a, b) => {
+            return a.price - b.price;
+          });
+        } else {
+          products.sort((a, b) => {
+            return b.price - a.price;
+          });
+        }
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <div>
       <div className="manage-area pt-4">
@@ -56,9 +121,18 @@ export default function ManageProduct() {
           </section>
           <section>
             <TableProducts
-              products={products}
+              products={currentPosts}
               isFlag={false}
+              setStatus={setStatus}
               removeProduct={removeProduct}
+              setSortTitle={setSortTitle}
+              sortTitle={sortTitle}
+              setSortDetail={setSortDetail}
+              sortDetail={sortDetail}
+              setSortStock={setSortStock}
+              sortStock={sortStock}
+              setSortPrice={setSortPrice}
+              sortPrice={sortPrice}
             />
           </section>
         </div>

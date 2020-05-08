@@ -24,7 +24,7 @@ export default function ViewProduct() {
     <div className="product-bg">
       <div className="view-area d-flex align-items-center justify-content-center">
           <div className="container">
-            <div class="product-detail">
+            <div className="product-detail">
               <h1>Product Detail</h1>
               <h2>Title: {product.title}</h2>
               <p>{product.detail}</p>
