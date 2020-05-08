@@ -27,7 +27,7 @@ export default function Products() {
             item.title !== null &&
             item.detail !== null &&
             item.stock !== null &&
-            item.price !== null 
+            item.price !== null
           );
         });
         setProducts(data);
@@ -60,12 +60,20 @@ export default function Products() {
             <div className="menubar-container">
               <ul>
                 <li>
-                  <a id="menu" onClick={() => isGetAllProducts()}>
+                  <a
+                    href="#target1"
+                    id="target1"
+                    onClick={() => isGetAllProducts()}
+                  >
                     All Products
                   </a>
                 </li>
                 <li>
-                  <a id="menu" onClick={() => isGetMyProducts()}>
+                  <a
+                    href="#target2"
+                    id="target2"
+                    onClick={() => isGetMyProducts()}
+                  >
                     My Product
                   </a>
                 </li>
