@@ -93,8 +93,6 @@ export default function Products() {
 
   const setStatus = (sort, key) => {
     var ststus = sort ? false : true;
-    console.log(sort);
-
     switch (key) {
       case "title":
         setSortTitle(ststus);

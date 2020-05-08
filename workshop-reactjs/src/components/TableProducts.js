@@ -29,33 +29,33 @@ export default function TableProducts(props) {
       <table className="table table-bordered" style={{ background: "#ffffff" }}>
         <thead>
           <tr style={{ backgroundColor: "#009DF5", color: "white" }}>
-            <th scope="col-md-1">#</th>
+            <th scope="col">#</th>
             <th
               onClick={() => props.setStatus(props.sortTitle, "title")}
-              scope="col-md-4"
+              scope="col"
             >
               Title {setArrow(props.sortTitle)}
             </th>
             <th
               onClick={() => props.setStatus(props.sortDetail, "detail")}
-              scope="col-md-4"
+              scope="col"
             >
               Detail {setArrow(props.sortDetail)}
             </th>
             <th
               onClick={() => props.setStatus(props.sortStock, "stock")}
-              scope="col-md-1"
+              scope="col"
             >
               Stock {setArrow(props.sortStock)}
             </th>
             <th
               onClick={() => props.setStatus(props.sortPrice, "price")}
-              scope="col-md-1"
+              scope="col"
             >
               Price {setArrow(props.sortPrice)}
             </th>
             <th
-              scope="col-md-3"
+              scope="col"
               className={props.isFlag === true ? "d-none d-print-block" : ""}
             >
               Action
